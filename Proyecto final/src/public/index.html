@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+     <div id="app">
+    <form @submit.prevent="send()">
+        <label for="titulo">
+            <input type="text" name="titulo" v-model="mensajes.titulo">
+        </label>
+        
+        <label for="mensaje">
+            <input type="text" name="mensaje" v-model="mensajes.mensaje" >
+        </label>
+        <div v-if="interuptor === false"><button type="submit">enviar</button></div>
+        <div v-else><button type="submit">Actualizar</button></div>
+    </form>
+    <table>
+        <thead><th>titulo</th> <th>mensaje</th></thead>
+        <tbody>
+            <tr v-for=" i in Recivirdatos">
+            <td>{{i.titulo}}</td>  
+            <td>{{i.mensaje}}</td>  
+            <td><button v-on:click="Delete(i._id)">Eliminar</button></td>
+            <td><button v-on:click="Update(i._id)">Actualizar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="demo.js"></script>
+ </body>
+ </html>
